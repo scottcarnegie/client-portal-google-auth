@@ -1,0 +1,42 @@
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: public
+
+# Ensure we skip ".env", which is only for local development
+skip_files:
+  - .env
+
+env_variables:
+  # Put production environment variables here.
+  APP_LOG: errorlog
+  APP_KEY: APPKEY
+  STORAGE_DIR: /tmp
+  APP_DEBUG: false
+
+  # Behavioural Config
+  CACHE_DRIVER: file
+  SESSION_DRIVER: database
+
+  # SQL Cloud Connection to Proxy
+  DB_HOST: localhost
+  DB_DATABASE: DATABASE NAME
+  DB_USERNAME: USERNAME
+  DB_PASSWORD: PASSWORD
+  DB_SOCKET: "/cloudsql/INSTANCE NAME"
+
+  # Google Authentication
+  GOOGLE_CLIENT_ID: GOOGLECLIENTID
+  GOOGLE_CLIENT_SECRET: GOOGLECLIENTSECRET
+  GOOGLE_PROJECT_ID: GOOGLEPROJECTID
+  GSUITE_DOMAIN: GSUITEDOMAIN
+
+beta_settings:
+    # for Cloud SQL, set this value to the Cloud SQL connection name,
+    # e.g. "project:region:cloudsql-instance"
+    cloud_sql_instances: "INSTANCENAME"
+    
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
